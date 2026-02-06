@@ -6,8 +6,8 @@
 }
 
 :root {
-  --primary: #2611e6;
-  --primary-dark: #11ee1c;
+  --primary: #00ccff;
+  --primary-dark: #deee01;
   --background: #f5f5f5;
   --white: #ffffff;
   --text: #333333;
@@ -67,7 +67,7 @@ button {
 }
 
 .login-form {
-  background: rgb(240, 8, 8);
+  background: rgb(58, 8, 240);
   padding: 30px;
   width: 320px;
   border-radius: 10px;

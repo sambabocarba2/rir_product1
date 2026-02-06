@@ -43,7 +43,7 @@ function Hotels() {
         style={{
           margin: "20px 0",
           padding: "10px 20px",
-          background: "#05ff0e",
+          background: "#ff7605",
           color: "white",
           border: "none",
           borderRadius: "5px",
@@ -108,13 +108,13 @@ function Hotels() {
               type="submit"
               style={{
                 padding: "12px 20px",
-                background: "linear-gradient(135deg, #13df24, #ee5d09)",
+                background: "linear-gradient(135deg, #cddf2d, #ee09db)",
                 color: "white",
                 border: "none",
                 borderRadius: "8px",
                 cursor: "pointer",
                 fontWeight: "bold",
-                boxShadow: "0 6px 15px rgba(12, 216, 63, 0.4)",
+                boxShadow: "0 6px 15px rgba(32, 12, 216, 0.4)",
                 transition: "all 0.3s ease",
                 transform: "translateY(0)",
               }}

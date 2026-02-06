@@ -6,7 +6,7 @@ function Sidebar() {
       className="sidebar"
       style={{
         width: "200px",
-        background: "rgb(240, 22, 22)",
+        background: "rgb(10, 10, 10)",
         padding: "20px",
         height: "100vh",
       }}
