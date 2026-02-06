@@ -6,34 +6,24 @@ import Sidebar from "./components/Sidebar";
 import Login from "./pages/Login";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // état connexion
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  if (!isLoggedIn) {
+    return <Login setIsLoggedIn={setIsLoggedIn} />;
+  }
 
   return (
     <Router>
-      <Routes>
-        {/* Route login */}
-        <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
-
-        {/* Routes protégées */}
-        <Route
-          path="/*"
-          element={
-            isLoggedIn ? (
-              <div style={{ display: "flex" }}>
-                <Sidebar />
-                <div style={{ flex: 1, padding: "20px" }}>
-                  <Routes>
-                    <Route path="/" element={<Dashboard />} />
-                    <Route path="hotels" element={<Hotels />} />
-                  </Routes>
-                </div>
-              </div>
-            ) : (
-              <Navigate to="/login" /> // redirige si pas connecté
-            )
-          }
-        />
-      </Routes>
+      <div style={{ display: "flex" }}>
+        <Sidebar />
+        <main style={{ flex: 1, padding: "20px" }}>
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/hotels" element={<Hotels />} />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </main>
+      </div>
     </Router>
   );
 }
