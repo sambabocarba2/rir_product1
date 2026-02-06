@@ -1,16 +1,16 @@
 import { useState } from "react";
 import HotelCard from "../components/HotelCard";
 
-import hotel1 from "../assets/images/hotel1.jpg";
-import hotel2 from "../assets/images/hotel2.jpg";
-import hotel3 from "../assets/images/hotel3.jpg";
-import hotel4 from "../assets/images/hotel4.jpg";
+import hotel1 from "../assets/images/hote.jpg";
+import hotel2 from "../assets/images/hotel.jpg";
+import hotel3 from "../assets/images/IM.jpg";
+import hotel4 from "../assets/images/IMG.jpg";
 
 const hotelsData = [
-  { name: "Hôtel Terrou-Bi", address: "Dakar", price: 25000, images: hotel1 },
-  { name: "Hôtel Pullman", address: "Plateau", price: 20000, images: hotel2 },
-  { name: "Hôtel King Fahd", address: "Almadies", price: 30000, images: hotel3 },
-  { name: "Hôtel Radisson", address: "Dakar", price: 22000, images: hotel4 },
+  { name: "Hôtel Terrou-Bi", address: "Dakar", price: 25000, images: hote},
+  { name: "Hôtel Pullman", address: "Plateau", price: 20000, images: hotel },
+  { name: "Hôtel King Fahd", address: "Almadies", price: 30000, images: IM },
+  { name: "Hôtel Radisson", address: "Dakar", price: 22000, images: IMG },
 ];
 
 function Hotels() {
