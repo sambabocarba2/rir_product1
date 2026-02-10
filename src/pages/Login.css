@@ -1,0 +1,50 @@
+/* ===== STYLE NORMAL (PC) ===== */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #fdfcfc;
+  color: white;
+}
+
+.login-form {
+  width: 400px;
+  background: #141414;
+  padding: 30px;
+  border-radius: 12px;
+}
+
+.login-form input,
+.login-form button {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+}
+
+button {
+  background: blue;
+  color: rgb(253, 252, 252);
+  border: none;
+  cursor: pointer;
+}
+
+/* ===== TABLETTE ===== */
+@media (max-width: 768px) {
+  .login-form {
+    width: 90%;
+  }
+}
+
+/* ===== TELEPHONE ===== */
+@media (max-width: 480px) {
+  .login-form {
+    width: 100%;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+}

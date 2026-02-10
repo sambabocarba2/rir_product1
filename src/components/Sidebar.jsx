@@ -15,7 +15,7 @@ function Sidebar() {
 
       <ul style={{ listStyle: "none", padding: 0 }}>
         <li style={{ margin: "10px 0" }}>
-          <Link to="/" style={{ textDecoration: "none", color: "#f7efefff" }}>
+          <Link to="/" style={{ textDecoration: "none", color: "rgb(245, 240, 240)" }}>
             Dashboard
           </Link>
         </li>

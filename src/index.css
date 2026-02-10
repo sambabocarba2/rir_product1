@@ -6,12 +6,12 @@
 }
 
 :root {
-  --primary: #00ccff;
-  --primary-dark: #deee01;
-  --background: #f5f5f5;
-  --white: #ffffff;
-  --text: #333333;
-  --border: #e0e0e0;
+  --primary: #0e0f0e;
+  --primary-dark: #cece0f;
+  --background: #e9edf0;
+  --white: #f7e6e6;
+  --text: #141212;
+  --border: #e8eef1;
 }
 
 /* BODY */
@@ -67,7 +67,7 @@ button {
 }
 
 .login-form {
-  background: rgb(58, 8, 240);
+  background: rgb(240, 240, 241);
   padding: 30px;
   width: 320px;
   border-radius: 10px;
@@ -84,7 +84,7 @@ button {
 
 .login-form button {
   background: var(--primary);
-  color: white;
+  color: rgb(228, 223, 223);
   padding: 12px;
   font-weight: bold;
 }

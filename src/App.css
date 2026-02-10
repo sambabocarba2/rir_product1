@@ -1,0 +1,101 @@
+/* ===== RESET SIMPLE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* ===== CONTAINER ===== */
+.login-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fdfdfd, #fcfcfd);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #1f2937; /* texte foncé */
+}
+
+/* ===== TITRES ===== */
+.login-container h1 {
+  font-size: 32px;
+  margin-bottom: 8px;
+  color: #1e40af; /* bleu foncé */
+}
+
+.login-container p {
+  margin-bottom: 20px;
+  color: #374151;
+}
+
+/* ===== FORMULAIRE ===== */
+.login-form {
+  background: #ffffff;
+  padding: 30px;
+  width: 340px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ===== INPUTS ===== */
+.login-form input {
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+/* ===== CHECKBOX ===== */
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #374151;
+}
+
+/* ===== BOUTON ===== */
+button {
+  padding: 12px;
+  background: #2563eb; /* bleu */
+  color: rgb(231, 236, 230);
+  font-size: 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #1e40af;
+}
+
+/* ===== LIENS ===== */
+.link {
+  text-align: center;
+  font-size: 14px;
+  cursor: pointer;
+  color: #2563eb;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.yellow {
+  color: #b45609; /* orange lisible */
+}
+
+.red {
+  color: #dc2626;
+  font-weight: bold;
+}

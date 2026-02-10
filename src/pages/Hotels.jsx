@@ -6,11 +6,14 @@ import hotel2 from "../assets/images/hotel2.jpg";
 import hotel3 from "../assets/images/hotel3.jpg";
 import hotel4 from "../assets/images/hotel4.jpg";
 
+
 const hotelsData = [
   { name: "Hôtel Terrou-Bi", address: "Dakar", price: 25000, images: hotel1 },
   { name: "Hôtel Pullman", address: "Plateau", price: 20000, images: hotel2 },
   { name: "Hôtel King Fahd", address: "Almadies", price: 30000, images: hotel3 },
   { name: "Hôtel Radisson", address: "Dakar", price: 22000, images: hotel4 },
+  
+  
 ];
 
 function Hotels() {
@@ -43,7 +46,7 @@ function Hotels() {
         style={{
           margin: "20px 0",
           padding: "10px 20px",
-          background: "#ff7605",
+          background: "#0a0a0a",
           color: "white",
           border: "none",
           borderRadius: "5px",
@@ -75,7 +78,7 @@ function Hotels() {
             left: 0,
             width: "100vw",
             height: "100vh",
-            backgroundColor: "rgba(0,0,0,0.5)",
+            backgroundColor: "rgba(14, 13, 13, 0.5)",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -91,7 +94,7 @@ function Hotels() {
               display: "flex",
               flexDirection: "column",
               gap: "12px",
-              backgroundColor: "#fff",
+              backgroundColor: "hsla(0, 4%, 5%, 0.96)",
               width: "400px",
             }}
             onClick={(e) => e.stopPropagation()} // éviter de fermer le formulaire en cliquant dessus
