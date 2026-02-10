@@ -40,21 +40,30 @@ function Hotels() {
 
   return (
     <div style={{ padding: "20px", position: "relative" }}>
-      <h1>Liste des hôtels</h1>
-      <button
-        onClick={() => setShowForm(true)}
-        style={{
-          margin: "20px 0",
-          padding: "10px 20px",
-          background: "#0a0a0a",
-          color: "white",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
-      >
-        Créer un nouvel hôtel
-      </button>
+      <div
+  style={{
+    display: "flex",
+    alignItems: "center",
+    marginBottom: "20px",
+  }}
+>
+  <h1 style={{ margin: 0 }}>Liste des hôtels</h1>
+
+  <button
+    onClick={() => setShowForm(true)}
+    style={{
+      marginLeft: "auto",   // 👈 C’EST ÇA LA CLÉ
+      padding: "10px 20px",
+      background: "#0a0a0a",
+      color: "white",
+      border: "none",
+      borderRadius: "5px",
+      cursor: "pointer",
+    }}
+  >
+    Créer un nouvel hôtel
+  </button>
+</div>
 
       {/* Liste des hôtels */}
       <div style={{ display: "flex", flexWrap: "wrap", gap: "15px" }}>
@@ -78,7 +87,7 @@ function Hotels() {
             left: 0,
             width: "100vw",
             height: "100vh",
-            backgroundColor: "rgba(14, 13, 13, 0.5)",
+            backgroundColor: "rgba(8, 8, 8, 0.5)",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",

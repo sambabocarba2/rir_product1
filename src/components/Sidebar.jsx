@@ -1,28 +1,34 @@
 import { Link } from "react-router-dom";
 
-function Sidebar() {
+function Sidebar({ open, setOpen }) {
   return (
     <div
-      className="sidebar"
       style={{
         width: "200px",
-        background: "rgb(10, 10, 10)",
+        background: "#0a0a0a",
         padding: "20px",
         height: "100vh",
+        position: "fixed",
+        top: 0,
+        left: open ? "0" : "-200px",
+        transition: "left 0.3s ease",
       }}
     >
-      <h2>Principal</h2>
+      <h2 style={{ color: "white" }}>Principal</h2>
 
       <ul style={{ listStyle: "none", padding: 0 }}>
-        <li style={{ margin: "10px 0" }}>
-          <Link to="/" style={{ textDecoration: "none", color: "rgb(245, 240, 240)" }}>
+        <li>
+          <Link to="/" style={{ color: "white" }} onClick={() => setOpen(false)}>
             Dashboard
           </Link>
         </li>
-
-        <li style={{ margin: "10px 0" }}>
-          <Link to="/hotels" style={{ textDecoration: "none", color: "#faf6f6ff" }}>
-            Liste des hotels
+        <li>
+          <Link
+            to="/hotels"
+            style={{ color: "white" }}
+            onClick={() => setOpen(false)}
+          >
+            Liste des hôtels
           </Link>
         </li>
       </ul>

@@ -1,30 +1,55 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
-import Dashboard from "./pages/Dashboard";
-import Hotels from "./pages/Hotels";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Sidebar from "./components/Sidebar";
 import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import Hotels from "./pages/Hotels";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [open, setOpen] = useState(false);
 
+  // 🔐 Si pas connecté → Login seulement
   if (!isLoggedIn) {
     return <Login setIsLoggedIn={setIsLoggedIn} />;
   }
 
+  // ✅ Si connecté → App normale
   return (
-    <Router>
+    <BrowserRouter>
       <div style={{ display: "flex" }}>
-        <Sidebar />
-        <main style={{ flex: 1, padding: "20px" }}>
+        <Sidebar open={open} setOpen={setOpen} />
+
+        <div
+          style={{
+            flex: 1,
+            padding: "20px",
+            marginLeft: "200px",
+          }}
+        >
+          <button
+  onClick={() => setOpen(!open)}
+  style={{
+    fontSize: "26px",
+    background: "none",
+    border: "none",
+    cursor: "pointer",
+    marginBottom: "10px",
+    color: "black", // 👈 AJOUTE CETTE LIGNE
+  }}
+>
+  ☰
+</button>
+
+
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/hotels" element={<Hotels />} />
-            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
-        </main>
+        </div>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 
