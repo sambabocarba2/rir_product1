@@ -54,7 +54,7 @@ function Hotels() {
     style={{
       marginLeft: "auto",   // 👈 C’EST ÇA LA CLÉ
       padding: "10px 20px",
-      background: "#0a0a0a",
+      background: "#030303",
       color: "white",
       border: "none",
       borderRadius: "5px",
@@ -87,7 +87,7 @@ function Hotels() {
             left: 0,
             width: "100vw",
             height: "100vh",
-            backgroundColor: "rgba(8, 8, 8, 0.5)",
+            backgroundColor: "rgba(7, 7, 7, 0.85)",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -103,7 +103,7 @@ function Hotels() {
               display: "flex",
               flexDirection: "column",
               gap: "12px",
-              backgroundColor: "hsla(0, 4%, 5%, 0.96)",
+              backgroundColor: "hsla(0, 33%, 98%, 0.96)",
               width: "400px",
             }}
             onClick={(e) => e.stopPropagation()} // éviter de fermer le formulaire en cliquant dessus
@@ -120,7 +120,7 @@ function Hotels() {
               type="submit"
               style={{
                 padding: "12px 20px",
-                background: "linear-gradient(135deg, #cddf2d, #ee09db)",
+                background: "linear-gradient(135deg, #0a0a0a, #070707)",
                 color: "white",
                 border: "none",
                 borderRadius: "8px",
@@ -132,11 +132,11 @@ function Hotels() {
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-3px)";
-                e.currentTarget.style.boxShadow = "0 12px 25px rgba(248, 7, 7, 0.5)";
+                e.currentTarget.style.boxShadow = "0 12px 25px rgba(7, 7, 7, 0.5)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = "0 6px 15px rgba(11, 240, 99, 0.4)";
+                e.currentTarget.style.boxShadow = "0 6px 15px rgba(5, 5, 5, 0.4)";
               }}
             >
               Enregistrer
