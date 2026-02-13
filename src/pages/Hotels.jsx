@@ -66,7 +66,8 @@ function Hotels() {
 </div>
 
       {/* Liste des hôtels */}
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "15px" }}>
+      <div className="hotel-list">
+
         {hotels.map((hotel, index) => (
           <HotelCard
             key={index}

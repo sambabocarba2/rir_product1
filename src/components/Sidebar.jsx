@@ -1,38 +1,36 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import "./Sidebar.css";
 
-function Sidebar({ open, setOpen }) {
+function Sidebar() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <div
-      style={{
-        width: "200px",
-        background: "#0a0a0a",
-        padding: "20px",
-        height: "100vh",
-        position: "fixed",
-        top: 0,
-        left: open ? "0" : "-200px",
-        transition: "left 0.3s ease",
-      }}
-    >
-      <h2 style={{ color: "white" }}>Principal</h2>
+    <>
+      {/* Bouton Hamburger */}
+      <button className="hamburger" onClick={() => setOpen(!open)}>
+        ☰
+      </button>
 
-      <ul style={{ listStyle: "none", padding: 0 }}>
-        <li>
-          <Link to="/" style={{ color: "white" }} onClick={() => setOpen(false)}>
-            Dashboard
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="/hotels"
-            style={{ color: "white" }}
-            onClick={() => setOpen(false)}
-          >
-            Liste des hôtels
-          </Link>
-        </li>
-      </ul>
-    </div>
+      {/* Sidebar */}
+      <div className={`sidebar ${open ? "open" : ""}`}>
+        <h2>Principal</h2>
+
+        <ul>
+          <li>
+            <Link to="/" onClick={() => setOpen(false)}>
+              Dashboard
+            </Link>
+          </li>
+
+          <li>
+            <Link to="/hotels" onClick={() => setOpen(false)}>
+              Liste des hotels
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </>
   );
 }
 

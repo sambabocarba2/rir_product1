@@ -6,12 +6,12 @@
 }
 
 :root {
-  --primary: #0e0f0e;
-  --primary-dark: #cece0f;
-  --background: #e9edf0;
-  --white: #f7e6e6;
-  --text: #141212;
-  --border: #e8eef1;
+  --primary: #0d0d0e;
+  --primary-dark: #11ee1c;
+  --background: #f5f5f5;
+  --white: #ffffff;
+  --text: #333333;
+  --border: #e0e0e0;
 }
 
 /* BODY */
@@ -67,7 +67,7 @@ button {
 }
 
 .login-form {
-  background: rgb(240, 240, 241);
+  background: rgb(15, 15, 15);
   padding: 30px;
   width: 320px;
   border-radius: 10px;
@@ -84,7 +84,58 @@ button {
 
 .login-form button {
   background: var(--primary);
-  color: rgb(228, 223, 223);
+  color: white;
   padding: 12px;
   font-weight: bold;
+}
+/* ========================= */
+/* LISTE DES HOTELS */
+.hotel-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
+.hotel-card {
+  width: 300px;
+}
+
+/* 📱 TABLETTE */
+@media (max-width: 1024px) {
+  .hotel-list {
+    justify-content: center;
+  }
+}
+
+/* 📱 MOBILE */
+@media (max-width: 768px) {
+  .hotel-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hotel-card {
+    width: 90%;
+  }
+}
+
+/* ============================= */
+/* STRUCTURE PRINCIPALE APP */
+.app-container {
+  display: flex;
+}
+
+/* ===== VERSION PC ===== */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  margin-left: 220px; /* largeur sidebar */
+  transition: margin 0.3s ease;
+}
+@media (max-width: 1024px) {
+  .main-content {
+    margin-left: 0;
+    padding-top: 90px; /* 🔥 espace propre sous hamburger */
+  }
 }

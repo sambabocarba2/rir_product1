@@ -1,110 +1,57 @@
-import "./Login.css";
 import { useState } from "react";
+import "./Login.css";
 
 function Login({ setIsLoggedIn }) {
-  const [remember, setRemember] = useState(true);
-  const [mode, setMode] = useState("login"); // login | register | forgot
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [remember, setRemember] = useState(false);
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    setIsLoggedIn(true);
-    if (remember) {
-      localStorage.setItem("isLoggedIn", "true");
-    }
-  };
+ const handleSubmit = (e) => {
+  e.preventDefault();
 
-  const handleRegister = (e) => {
-    e.preventDefault();
-    alert("Inscription réussie ✅ (simulation)");
-    setMode("login");
-  };
+  setIsLoggedIn(true);
+  if (remember) {
+    localStorage.setItem("isLoggedIn", "true");
+  }
+};
 
-  const handleForgot = (e) => {
-    e.preventDefault();
-    alert("Email de récupération envoyé 📧 (simulation)");
-    setMode("login");
-  };
 
   return (
     <div className="login-container">
-      <h1>RIR PRODUCT</h1>
+      <h1>RED PRODUCT</h1>
+      <p>Connexion Administrateur</p>
 
-      {/* ===== TITRE DYNAMIQUE ===== */}
-      <p>
-        {mode === "login" && "Connexion Administrateur"}
-        {mode === "register" && "Créer un compte"}
-        {mode === "forgot" && "Mot de passe oublié"}
-      </p>
+      <form className="login-form" onSubmit={handleSubmit}>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-      {/* ===== FORMULAIRE ===== */}
-      <form
-        className="login-form"
-        onSubmit={
-          mode === "login"
-            ? handleLogin
-            : mode === "register"
-            ? handleRegister
-            : handleForgot
-        }
-      >
-        {mode === "register" && (
-          <input type="text" placeholder="Nom complet" required />
-        )}
+        <input
+          type="password"
+          placeholder="Mot de passe"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-       {(mode === "login" || mode === "register" || mode === "forgot") && (
-  <input
-    type="email"
-    placeholder="Email"
-    required={mode !== "login"}
-  />
-)}
+        <label className="remember">
+          <input
+            type="checkbox"
+            checked={remember}
+            onChange={(e) => setRemember(e.target.checked)}
+          />
+          Garder moi connecté
+        </label>
 
-{(mode === "login" || mode === "register") && (
-  <input
-    type="password"
-    placeholder="Mot de passe"
-    required={mode === "register"}
-  />
-)}
-
-        {mode === "login" && (
-          <label className="remember">
-            <input
-              type="checkbox"
-              checked={remember}
-              onChange={(e) => setRemember(e.target.checked)}
-            />
-            Garder moi connecté
-          </label>
-        )}
-
-        <button type="submit">
-          {mode === "login" && "Se connecter"}
-          {mode === "register" && "S'inscrire"}
-          {mode === "forgot" && "Réinitialiser"}
-        </button>
-
-        {/* ===== LIENS ===== */}
-        {mode === "login" && (
-          <>
-            <p className="link yellow" onClick={() => setMode("forgot")}>
-              Mot de passe oublié ?
-            </p>
-
-            <p className="link">
-              Vous n'avez pas de compte ?{" "}
-              <span className="red" onClick={() => setMode("register")}>
-                S'inscrire
-              </span>
-            </p>
-          </>
-        )}
-
-        {(mode === "register" || mode === "forgot") && (
-          <p className="link" onClick={() => setMode("login")}>
-            ← Retour à la connexion
-          </p>
-        )}
+        <button type="submit">Se connecter</button>
+        <a href="#" style={{ color: "yellow", textDecoration: "none"}}>
+            Mot de passe oublier ?
+        </a>
+        <span>
+            Vous n'avez pas de compte ? <a href="#" style={{ color: "red"}}>S'inscrire</a>
+        </span>
       </form>
     </div>
   );

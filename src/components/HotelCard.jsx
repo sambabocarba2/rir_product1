@@ -7,17 +7,17 @@ function HotelCard({ name, address, price, images }) {
         borderRadius: "12px",
         overflow: "hidden",
         background: "#fffdfd",
-        boxShadow: "0 6px 15px rgba(0,0,0,0.15)",
+        boxShadow: "0 6px 15px rgba(17, 17, 17, 0.15)",
         cursor: "pointer",
         transition: "all 0.3s ease",
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.transform = "scale(1.08)";
-        e.currentTarget.style.boxShadow = "0 12px 30px rgba(0,0,0,0.25)";
+        e.currentTarget.style.boxShadow = "0 12px 30px #07070740";
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = "scale(1)";
-        e.currentTarget.style.boxShadow = "0 6px 15px rgba(0,0,0,0.15)";
+        e.currentTarget.style.boxShadow = "0 6px 15px rgba(14, 13, 13, 0.15)";
       }}
     >
       <img

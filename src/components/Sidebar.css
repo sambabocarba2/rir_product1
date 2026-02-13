@@ -1,0 +1,57 @@
+/* SIDEBAR NORMAL (PC) */
+.sidebar {
+  width: 200px;
+  background: rgb(12, 11, 11);
+  padding: 20px;
+  height: 100vh;
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 15px 0;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: white;
+}
+
+/* HAMBURGER (caché en PC) */
+.hamburger {
+  display: none;
+  font-size: 28px;
+  background: black;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+/* 📱 TABLETTE + MOBILE */
+@media (max-width: 1024px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    z-index: 1000;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .hamburger {
+    display: block;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1100;
+  }
+}
