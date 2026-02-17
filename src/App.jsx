@@ -13,20 +13,21 @@ function App() {
   }
 
   return (
-    <Router>
-      <div style={{ display: "flex" }}>
-        <Sidebar />
-       <main className="main-content">
+  <Router>
+    <div className="app-container">
+      <Sidebar />
 
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/hotels" element={<Hotels />} />
-            <Route path="*" element={<Navigate to="/" />} />
-          </Routes>
-        </main>
-      </div>
-    </Router>
-  );
+      <main className="main-content">
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/hotels" element={<Hotels />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </main>
+    </div>
+  </Router>
+);
+
 }
 
 export default App;

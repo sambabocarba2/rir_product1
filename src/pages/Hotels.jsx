@@ -6,22 +6,49 @@ import hotel2 from "../assets/images/hotel2.jpg";
 import hotel3 from "../assets/images/hotel3.jpg";
 import hotel4 from "../assets/images/hotel4.jpg";
 
-
 const hotelsData = [
-  { name: "Hôtel Terrou-Bi", address: "Dakar", price: 25000, images: hotel1 },
-  { name: "Hôtel Pullman", address: "Plateau", price: 20000, images: hotel2 },
-  { name: "Hôtel King Fahd", address: "Almadies", price: 30000, images: hotel3 },
-  { name: "Hôtel Radisson", address: "Dakar", price: 22000, images: hotel4 },
-  
-  
+  {
+    name: "Hôtel Terrou-Bi",
+    address: "Dakar",
+    email: "contact@terroubi.sn",
+    phone: "771234567",
+    price: 25000,
+    images: hotel1,
+  },
+  {
+    name: "Hôtel Pullman",
+    address: "Plateau",
+    email: "contact@pullman.sn",
+    phone: "781234567",
+    price: 20000,
+    images: hotel2,
+  },
+  {
+    name: "Hôtel King Fahd",
+    address: "Almadies",
+    email: "contact@kingfahd.sn",
+    phone: "761234567",
+    price: 30000,
+    images: hotel3,
+  },
+  {
+    name: "Hôtel Radisson",
+    address: "Dakar",
+    email: "contact@radisson.sn",
+    phone: "701234567",
+    price: 22000,
+    images: hotel4,
+  },
 ];
 
 function Hotels() {
   const [hotels, setHotels] = useState(hotelsData);
   const [showForm, setShowForm] = useState(false);
+  const [search, setSearch] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const newHotel = {
       name: e.target.name.value,
       address: e.target.address.value,
@@ -33,115 +60,206 @@ function Hotels() {
         ? URL.createObjectURL(e.target.image.files[0])
         : hotel1,
     };
+
     setHotels([newHotel, ...hotels]);
-    e.target.reset();
     setShowForm(false);
+    e.target.reset();
+  };
+
+  const inputStyle = {
+    height: "60px",
+    padding: "14px 16px",
+    fontSize: "16px",
+    borderRadius: "8px",
+    border: "1px solid #ccc",
   };
 
   return (
-    <div style={{ padding: "20px", position: "relative" }}>
-      <div
+    <div className="hotels-page">
+     {/* 🔍 RECHERCHE + 🔔 NOTIFICATION */}
+<div
   style={{
     display: "flex",
     alignItems: "center",
-    marginBottom: "20px",
+    justifyContent: "space-between",
+    marginBottom: "15px",
+    gap: "12px",
   }}
 >
-  <h1 style={{ margin: 0 }}>Liste des hôtels</h1>
-
-  <button
-    onClick={() => setShowForm(true)}
+  {/* 🔍 Recherche */}
+  <div
     style={{
-      marginLeft: "auto",   // 👈 C’EST ÇA LA CLÉ
-      padding: "10px 20px",
-      background: "#030303",
-      color: "white",
-      border: "none",
-      borderRadius: "5px",
-      cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      gap: "8px",
+      background: "#fff",
+      border: "1px solid #ccc",
+      borderRadius: "8px",
+      padding: "8px 12px",
+      flex: 1,
+      maxWidth: "320px",
     }}
   >
-    Créer un nouvel hôtel
+    <span style={{ fontSize: "18px" }}>🔍</span>
+    <input
+      type="text"
+      placeholder="Rechercher un hôtel..."
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+      style={{
+        border: "none",
+        outline: "none",
+        width: "100%",
+        fontSize: "14px",
+      }}
+    />
+  </div>
+
+  {/* 🔔 Notification */}
+  <button
+    style={{
+      background: "#fff",
+      border: "1px solid #ccc",
+      borderRadius: "8px",
+      width: "42px",
+      height: "42px",
+      fontSize: "18px",
+      cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    }}
+    title="Notifications"
+  >
+    
+    🔔
   </button>
 </div>
 
-      {/* Liste des hôtels */}
-      <div className="hotel-list">
 
-        {hotels.map((hotel, index) => (
-          <HotelCard
-            key={index}
-            name={hotel.name}
-            address={hotel.address}
-            price={hotel.price}
-            images={hotel.images}
-          />
-        ))}
+      {/* TITRE À GAUCHE / BOUTON À DROITE */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: "20px",
+        }}
+      >
+        <h1 style={{ margin: 0 }}>Liste des hôtels</h1>
+
+        <button
+          onClick={() => setShowForm(true)}
+          style={{
+            padding: "10px 20px",
+            background: "#000",
+            color: "#fff",
+            border: "none",
+            borderRadius: "6px",
+            cursor: "pointer",
+          }}
+        >
+          Créer un nouvel hôtel
+        </button>
       </div>
 
-      {/* Formulaire modal */}
+      {/* LISTE DES HÔTELS */}
+      <div className="hotel-list">
+        {hotels
+          .filter(
+            (hotel) =>
+              hotel.name.toLowerCase().includes(search.toLowerCase()) ||
+              hotel.address.toLowerCase().includes(search.toLowerCase())
+          )
+          .map((hotel, index) => (
+            <HotelCard
+              key={index}
+              name={hotel.name}
+              address={hotel.address}
+              price={hotel.price}
+              images={hotel.images}
+            />
+          ))}
+      </div>
+
+      {/* MODAL */}
       {showForm && (
         <div
+          onClick={() => setShowForm(false)}
           style={{
             position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100vw",
-            height: "100vh",
-            backgroundColor: "rgba(7, 7, 7, 0.85)",
+            inset: 0,
+            background: "rgba(0,0,0,0.6)",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             zIndex: 1000,
           }}
-          onClick={() => setShowForm(false)} // fermer si on clique en dehors
         >
           <form
             onSubmit={handleSubmit}
-            style={{
-              padding: "20px",
-              borderRadius: "10px",
-              display: "flex",
-              flexDirection: "column",
-              gap: "12px",
-              backgroundColor: "hsla(0, 33%, 98%, 0.96)",
-              width: "400px",
-            }}
-            onClick={(e) => e.stopPropagation()} // éviter de fermer le formulaire en cliquant dessus
+            onClick={(e) => e.stopPropagation()}
+            className="modal-form"
           >
-            <h2>Ajouter un hôtel</h2>
-            <input type="text" name="name" placeholder="Nom de l'hôtel" required />
-            <input type="text" name="address" placeholder="Adresse" required />
-            <input type="email" name="email" placeholder="Email" required />
-            <input type="tel" name="phone" placeholder="Numéro de téléphone" required />
-            <input type="number" name="price" placeholder="Prix par nuit" required />
-            <input type="text" name="currency" placeholder="Devise (ex: XOF, €)" required />
-            <input type="file" name="image" accept="image/*" />
-            <button
-              type="submit"
+            <div style={{ display: "flex", alignItems: "center", marginBottom: "20px" }}>
+              <button
+                type="button"
+                onClick={() => setShowForm(false)}
+                style={{
+                  fontSize: "22px",
+                  background: "none",
+                  cursor: "pointer",
+                  marginRight: "10px",
+                }}
+              >
+                ←
+              </button>
+              <h2 style={{ margin: 0 }}>CRÉER UN NOUVEAU HÔTEL</h2>
+            </div>
+
+            <div className="modal-grid">
+              <input name="name" placeholder="Nom de l'hôtel" required style={inputStyle} />
+              <input name="address" placeholder="Adresse" required style={inputStyle} />
+              <input type="email" name="email" placeholder="E-mail" required style={inputStyle} />
+              <input type="tel" name="phone" placeholder="Téléphone" required style={inputStyle} />
+              <input type="number" name="price" placeholder="Prix par nuit" required style={inputStyle} />
+              <select name="currency" required style={inputStyle}>
+                <option value="XOF">XOF</option>
+                <option value="EUR">EUR</option>
+                <option value="USD">USD</option>
+              </select>
+            </div>
+
+            <label
               style={{
-                padding: "12px 20px",
-                background: "linear-gradient(135deg, #0a0a0a, #070707)",
-                color: "white",
-                border: "none",
-                borderRadius: "8px",
+                marginTop: "25px",
+                height: "130px",
+                border: "2px dashed #aaa",
+                borderRadius: "10px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
                 cursor: "pointer",
-                fontWeight: "bold",
-                boxShadow: "0 6px 15px rgba(32, 12, 216, 0.4)",
-                transition: "all 0.3s ease",
-                transform: "translateY(0)",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "translateY(-3px)";
-                e.currentTarget.style.boxShadow = "0 12px 25px rgba(7, 7, 7, 0.5)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = "0 6px 15px rgba(5, 5, 5, 0.4)";
               }}
             >
-              Enregistrer
-            </button>
+              📷 Ajouter une photo
+              <input type="file" name="image" accept="image/*" hidden />
+            </label>
+
+            <div style={{ textAlign: "right", marginTop: "30px" }}>
+              <button
+                type="submit"
+                style={{
+                  padding: "14px 30px",
+                  background: "#000",
+                  color: "#fff",
+                  borderRadius: "8px",
+                  fontWeight: "bold",
+                }}
+              >
+                Enregistrer
+              </button>
+            </div>
           </form>
         </div>
       )}

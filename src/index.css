@@ -90,15 +90,15 @@ button {
 }
 /* ========================= */
 /* LISTE DES HOTELS */
+/* ===== LISTE DES HOTELS (FORCÉ GRID) ===== */
 .hotel-list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 20px;
-  justify-content: flex-start;
+  width: 100%;
 }
-
 .hotel-card {
-  width: 300px;
+  width: 100% !important;
 }
 
 /* 📱 TABLETTE */
@@ -110,14 +110,20 @@ button {
 
 /* 📱 MOBILE */
 @media (max-width: 768px) {
-  .hotel-list {
-    flex-direction: column;
-    align-items: center;
-  }
+/* ========================= */
+/* LISTE DES HOTELS */
+.hotel-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  width: 100%;
+  overflow: hidden; /* ✅ À AJOUTER ICI */
+}
 
-  .hotel-card {
-    width: 90%;
-  }
+.hotel-card {
+  width: 100%;
+}
+
 }
 
 /* ============================= */
@@ -127,15 +133,175 @@ button {
 }
 
 /* ===== VERSION PC ===== */
+/* ============================= */
+/* CONTENU PRINCIPAL DE L’APP */
+/* ============================= */
+
 .main-content {
   flex: 1;
-  padding: 20px;
-  margin-left: 220px; /* largeur sidebar */
-  transition: margin 0.3s ease;
+  margin-left: 220px;   /* sidebar PC */
+  padding: 12px 16px;   /* ⬅️⬅️ réduit gauche / droite */
+  max-width: 100%;
+  transition: all 0.3s ease;
 }
+
+
+/* 📱 TABLETTE & MOBILE */
 @media (max-width: 1024px) {
   .main-content {
     margin-left: 0;
-    padding-top: 90px; /* 🔥 espace propre sous hamburger */
+    padding-top: 80px;   /* espace hamburger */
+    padding-left: 8px;  /* 🔥 réduit gauche */
+    padding-right: 8px; /* 🔥 réduit droite */
   }
 }
+/* PAGE HOTELS */
+.hotels-page {
+  padding: 6px 8px;   /* 🔥 réduit fortement gauche / droite */
+  max-width: 100%;
+}
+.app-container {
+  width: 100%;
+}
+
+/* PC */
+.main-content {
+  margin-left: 220px;
+  padding: 16px;
+}
+
+/* TABLETTE & MOBILE */
+@media (max-width: 1024px) {
+  .main-content {
+    margin-left: 0;
+    padding-top: 80px; /* espace hamburger */
+  }
+}
+/* ============================= */
+/* MODAL 2 COLONNES SANS DÉBORDEMENT */
+/* ============================= */
+
+.modal-form {
+  background: #fff;
+  width: 95%;
+  max-width: 900px;
+  max-height: 90vh;     /* 🔥 empêche le débordement */
+  padding: 20px;
+  border-radius: 12px;
+  overflow-y: auto;     /* 🔥 scroll interne */
+}
+
+/* grille toujours en 2 colonnes */
+.modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* inputs ne débordent jamais */
+.modal-grid input,
+.modal-grid select {
+  width: 100%;
+  min-width: 0;
+}
+
+/* mobile : réduire l’espace */
+@media (max-width: 768px) {
+  .modal-form {
+    width: 98%;
+    padding: 16px;
+  }
+}
+/* STRUCTURE PRINCIPALE APP */
+.app-container {
+  display: flex;
+}
+
+/* PC */
+.main-content {
+  margin-left: 220px;
+  padding: 16px;
+}
+
+/* TABLETTE & MOBILE */
+@media (max-width: 1024px) {
+  .main-content {
+    margin-left: 0;
+    padding-top: 80px;
+  }
+}/* HEADER HOTELS */
+.hotels-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+/* BOUTONS À DROITE */
+.hotels-actions {
+  display: flex;
+  flex-direction: column; /* 🔥 l’un au-dessus de l’autre */
+  gap: 10px;
+}
+
+/* BOUTON RECHERCHE */
+.search-btn {
+  background: #ffffff;
+  color: #333;
+  border: 1px solid #ddd;
+  padding: 10px 14px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  background: #f3f3f3;
+}
+
+/* BOUTON CRÉER */
+.create-btn {
+  background: #000;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.create-btn:hover {
+  opacity: 0.9;
+}
+
+/* 📱 MOBILE */
+@media (max-width: 768px) {
+  .hotels-header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hotels-actions {
+    width: 100%;
+  }
+
+  .search-btn,
+  .create-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+
+
+
+
+
+
+

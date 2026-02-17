@@ -7,14 +7,22 @@ function Sidebar() {
 
   return (
     <>
-      {/* Bouton Hamburger */}
-      <button className="hamburger" onClick={() => setOpen(!open)}>
+      {/* Hamburger */}
+      <button className="hamburger" onClick={() => setOpen(true)}>
         ☰
       </button>
 
+      {/* Overlay */}
+      {open && (
+        <div
+          className="sidebar-overlay"
+          onClick={() => setOpen(false)}
+        ></div>
+      )}
+
       {/* Sidebar */}
       <div className={`sidebar ${open ? "open" : ""}`}>
-        <h2>Principal</h2>
+        <h2 style={{ color: "white", padding: "20px" }}>Principal</h2>
 
         <ul>
           <li>
@@ -22,10 +30,9 @@ function Sidebar() {
               Dashboard
             </Link>
           </li>
-
           <li>
             <Link to="/hotels" onClick={() => setOpen(false)}>
-              Liste des hotels
+              Liste des hôtels
             </Link>
           </li>
         </ul>

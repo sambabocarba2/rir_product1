@@ -5,41 +5,56 @@ function StatCard({ title, value, color, icon }) {
       style={{
         background: "#f1ecec",
         borderRadius: "16px",
-        padding: "20px",
-        minWidth: "200px",
+        padding: "16px",
+        minWidth: "0", // 🔥 IMPORTANT
         display: "flex",
         alignItems: "center",
-        gap: "15px",
+        gap: "12px",
         boxShadow: "0 6px 15px rgba(0,0,0,0.15)",
         cursor: "pointer",
-        transition: "all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)",
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "scale(1.1)";
-        e.currentTarget.style.boxShadow =
-          "0 15px 35px rgba(0,0,0,0.25)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = "scale(1)";
-        e.currentTarget.style.boxShadow =
-          "0 6px 15px rgba(0,0,0,0.15)";
+        transition: "all 0.3s ease",
       }}
     >
+      {/* ICON */}
       <div
         style={{
-          fontSize: "35px",
+          fontSize: "32px",
           color,
           background: `${color}22`,
           padding: "12px",
           borderRadius: "12px",
+          flexShrink: 0, // 🔥 empêche l’écrasement
         }}
       >
         {icon}
       </div>
 
-      <div>
-        <h4 style={{ margin: 0 }}>{title}</h4>
-        <p style={{ margin: 0, fontSize: "22px", fontWeight: "bold" }}>
+      {/* TEXTE */}
+      <div
+        style={{
+          minWidth: 0, // 🔥 ESSENTIEL
+          overflow: "hidden",
+        }}
+      >
+        <h4
+          style={{
+            margin: 0,
+            fontSize: "14px",
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
+          {title}
+        </h4>
+
+        <p
+          style={{
+            margin: 0,
+            fontSize: "20px",
+            fontWeight: "bold",
+          }}
+        >
           {value}
         </p>
       </div>
